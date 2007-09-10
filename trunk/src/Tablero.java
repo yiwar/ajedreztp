@@ -10,7 +10,7 @@ public class Tablero {
 
 	// Constructor
 	public Tablero () {
-		System.out.println("Tablero.Tablero(): Me acaban de construir");
+		System.out.println("Tablero.Tablero(): Me acaban de crear");
 	}
 }
 
