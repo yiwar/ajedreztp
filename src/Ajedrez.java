@@ -10,6 +10,9 @@ public class Ajedrez {
 
 	public static void main(String[] args) {
 	
-		System.out.println("Refresco de memoria");
+		Tablero t;
+		System.out.println("Ajedrez.main(): He empezado");
+
+		t = new Tablero();
 	}
 }
