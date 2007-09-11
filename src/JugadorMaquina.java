@@ -9,9 +9,9 @@ import java.io.*;
 public class JugadorMaquina extends Jugador {
 
 	// Constructor
-	public JugadorMaquina (int color) {
+	public JugadorMaquina (int color, Tablero t) {
 		
-		super(color);
+		super(color, t);
 		System.out.println("JugadorMaquina.JugadorMaquina(): Me acaban de crear");
 	}
 }

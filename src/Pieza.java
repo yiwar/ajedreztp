@@ -6,7 +6,7 @@
 
 import java.io.*;
 
-public abstract class Pieza {
+public abstract class Pieza implements Constantes {
 
 	// color de la pieza
 	int color;
@@ -21,4 +21,6 @@ public abstract class Pieza {
 		this.y = y;
 		//System.out.println("Pieza.Pieza(): Me acaban de crear");
 	}
+
+	public abstract String toString ();
 }	

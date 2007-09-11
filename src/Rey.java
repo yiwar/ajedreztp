@@ -14,5 +14,13 @@ public class Rey extends Pieza {
 		super(color, x, y);
 		System.out.println("Rey.Rey(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
+
+	public String toString () {
+
+		if (color == BLANCO)
+			return "R";
+		else
+			return "r";
+	}	
 }
 

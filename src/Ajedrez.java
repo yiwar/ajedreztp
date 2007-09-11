@@ -16,7 +16,9 @@ public class Ajedrez implements Constantes{
 		System.out.println("Ajedrez.main(): He empezado");
 
 		t = new Tablero();
-		jH = new JugadorHumano(BLANCO);
-		jM = new JugadorMaquina(NEGRO);
+		jH = new JugadorHumano(BLANCO, t);
+		jM = new JugadorMaquina(NEGRO, t);
+
+		t.mostrar();
 	}
 }

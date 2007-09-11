@@ -14,5 +14,13 @@ public class Peon extends Pieza {
 		super(color, x, y);
 		System.out.println("Peon.Peon(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
+
+	public String toString () {
+
+		if (color == BLANCO)
+			return "P";
+		else
+			return "p";
+	}	
 }
 

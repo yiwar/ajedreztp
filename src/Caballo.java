@@ -14,5 +14,13 @@ public class Caballo extends Pieza {
 		super(color, x, y);
 		System.out.println("Caballo.Caballo(): \tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
+
+	public String toString () {
+
+		if (color == BLANCO)
+			return "C";
+		else
+			return "c";
+	}
 }
 

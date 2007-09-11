@@ -14,5 +14,13 @@ public class Alfil extends Pieza {
 		super(color, x, y);
 		System.out.println("Alfil.Alfil(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
+
+	public String toString () {
+
+		if (color == BLANCO)
+			return "A";
+		else
+			return "a";
+	}
 }
 
