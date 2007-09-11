@@ -14,5 +14,13 @@ public class Torre extends Pieza {
 		super(color, x, y);
 		System.out.println("Torre.Torre(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
+
+	public String toString () {
+
+		if (color == BLANCO)
+			return "T";
+		else
+			return "t";
+	}	
 }
 
