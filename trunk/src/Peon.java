@@ -9,9 +9,10 @@ import java.io.*;
 public class Peon extends Pieza {
 
 	// Constructor
-	public Peon () {
+	public Peon (int color, int x, int y) {
 		
-		System.out.println("Peon.Peon(): Me acaban de crear");
+		super(color, x, y);
+		System.out.println("Peon.Peon(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 }
 

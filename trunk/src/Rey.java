@@ -9,9 +9,10 @@ import java.io.*;
 public class Rey extends Pieza {
 
 	// Constructor
-	public Rey () {
+	public Rey (int color, int x, int y) {
 		
-		System.out.println("Rey.Rey(): Me acaban de crear");
+		super(color, x, y);
+		System.out.println("Rey.Rey(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 }
 

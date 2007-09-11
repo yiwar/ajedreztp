@@ -6,7 +6,7 @@
 
 import java.io.*;
 
-public class Ajedrez {
+public class Ajedrez implements Constantes{
 
 	public static void main(String[] args) {
 	
@@ -16,7 +16,7 @@ public class Ajedrez {
 		System.out.println("Ajedrez.main(): He empezado");
 
 		t = new Tablero();
-		jH = new JugadorHumano();
-		jM = new JugadorMaquina();
+		jH = new JugadorHumano(BLANCO);
+		jM = new JugadorMaquina(NEGRO);
 	}
 }
