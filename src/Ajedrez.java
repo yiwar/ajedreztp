@@ -11,10 +11,12 @@ public class Ajedrez {
 	public static void main(String[] args) {
 	
 		Tablero t;
-		JugadorHumano jh;
+		Jugador jH;
+		Jugador jM;
 		System.out.println("Ajedrez.main(): He empezado");
 
 		t = new Tablero();
-		jh = new JugadorHumano();
+		jH = new JugadorHumano();
+		jM = new JugadorMaquina();
 	}
 }
