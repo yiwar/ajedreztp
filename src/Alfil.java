@@ -9,9 +9,10 @@ import java.io.*;
 public class Alfil extends Pieza {
 
 	// Constructor
-	public Alfil () {
+	public Alfil (int color, int x, int y) {
 		
-		System.out.println("Alfil.Alfil(): Me acaban de crear");
+		super(color, x, y);
+		System.out.println("Alfil.Alfil(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 }
 

@@ -9,9 +9,10 @@ import java.io.*;
 public class Torre extends Pieza {
 
 	// Constructor
-	public Torre () {
+	public Torre (int color, int x, int y) {
 		
-		System.out.println("Torre.Torre(): Me acaban de crear");
+		super(color, x, y);
+		System.out.println("Torre.Torre(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 }
 
