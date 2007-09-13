@@ -23,4 +23,6 @@ public abstract class Pieza implements Constantes {
 	}
 
 	public abstract String toString ();
+
+	//public abstract boolean movimientoValido ();
 }	
