@@ -75,8 +75,8 @@ public class Tablero {
             		tableroJP.add(new BLabel((new Integer(i+1)).toString()));
             		for (int j = 0; j < 8; j++) {
 				Casilla c;
-				if (((i + j) % 2) == 0) c = new Casilla(Color.white);
-       				else c = new Casilla(Color.gray);
+				if (((i + j) % 2) == 0) c = new Casilla(i, j, Color.white);
+       				else c = new Casilla(i, j, Color.gray);
 				casillas[i][j] = c;
 
                 		//int color = b.getColor(i, j);
@@ -111,19 +111,42 @@ public class Tablero {
 	class Casilla extends JPanel {
 		
 		private JLabel l;
+		// posicion
+		private int f, c;
 		
-		public Casilla (Color color) {
+		public Casilla (int f, int c, Color color) {
 			
 			super();
 			setBackground(color);
 			setPreferredSize(new Dimension(42, 42));
+			this.f = f;
+			this.c = c;
 			l = new JLabel();
         		l.setPreferredSize(new Dimension(32, 32));
         		add(l);
+			addMouseListener(new CasillaMouseListener());
 		}
 
 		void setIcon(Icon i) {
         		l.setIcon(i);
+    		}
+
+		class CasillaMouseListener extends MouseAdapter {
+        		/*
+			public void mouseEntered(MouseEvent e) {
+            			mouseIn = true;
+            			repaint();
+        		}
+        
+        		public void mouseExited(MouseEvent e) {
+            			mouseIn = false;
+            			repaint();
+        		}
+        		*/
+        		public void mouseClicked(MouseEvent e) {
+            			//bv.selected(y, x);
+				System.out.println("Casilla pulsada: <" + f + ", " + c + ">");
+        		}
     		}
 	}
 }

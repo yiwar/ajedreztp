@@ -44,6 +44,13 @@ public class Ajedrez extends JFrame implements Constantes{
 
 		t.mostrar();
 		show();
+
+		// desarrollo de la partida
+		while (true) {
+			
+			jH.mover();
+			jM.mover();
+		}
 	}
 	
 	public static void main(String[] args) {
