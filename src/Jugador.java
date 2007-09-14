@@ -65,5 +65,7 @@ public abstract class Jugador implements Constantes {
 
 		//System.out.println("Jugador.Jugador(): Me acaban de crear");
 	}
+
+	public abstract void mover ();
 }	
 

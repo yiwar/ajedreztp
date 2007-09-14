@@ -14,5 +14,9 @@ public class JugadorMaquina extends Jugador {
 		super(color, t);
 		System.out.println("JugadorMaquina.JugadorMaquina(): Me acaban de crear");
 	}
+
+	public void mover () {
+
+	}
 }
 
