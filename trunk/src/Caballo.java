@@ -11,7 +11,7 @@ public class Caballo extends Pieza {
 	// Constructor
 	public Caballo (int color, int x, int y) {
 		
-		super(color, x, y);
+		super(color, x, y, "imagenes/c");
 		System.out.println("Caballo.Caballo(): \tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 

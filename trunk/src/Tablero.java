@@ -14,13 +14,13 @@ public class Tablero {
 
 	private JPanel tableroJP;
 	private Pieza[][] tablero;
-	private JPanel[][] casillasJP;
+	private Casilla[][] casillas;
 
 	// Constructor
 	public Tablero () {
 		
 		tablero = new Pieza[8][8];
-		casillasJP = new JPanel[8][8];
+		casillas = new Casilla[8][8];
 		System.out.println("Tablero.Tablero(): Me acaban de crear");
 	}
 
@@ -53,6 +53,20 @@ public class Tablero {
 		}
 	}
 
+	// representa la situacion actual del teclado en la pantalla
+	//
+	public void mostrarGUI () {
+		
+		for (int i=0; i < 8; i++) {
+			for (int j=0; j < 8; j++) {
+				if (tablero[j][i] != null)
+					(casillas[j][i]).setIcon((tablero[j][i]).getImagen());
+			}
+		}
+	}
+
+	// crea el tablero inicialmente vacio
+	//
 	public void crearTableroGUI (JFrame f) {
 
         	tableroJP.setLayout(new GridLayout(10, 10));
@@ -60,21 +74,17 @@ public class Tablero {
         	for (int i = 0; i < 8; i++) {
             		tableroJP.add(new BLabel((new Integer(i+1)).toString()));
             		for (int j = 0; j < 8; j++) {
-				JPanel jp = new JPanel();
-				if (((i + j) % 2) == 0) jp.setBackground(Color.white);
-       				else jp.setBackground(Color.gray);
-				jp.setPreferredSize(new Dimension(42, 42));
-                		JLabel jl = new JLabel();
-        			jl.setPreferredSize(new Dimension(32, 32));
-        			jp.add(jl);
-				casillasJP[i][j] = jp;
+				Casilla c;
+				if (((i + j) % 2) == 0) c = new Casilla(Color.white);
+       				else c = new Casilla(Color.gray);
+				casillas[i][j] = c;
 
                 		//int color = b.getColor(i, j);
                 		//if (color != Board.EMPTY) {
                     		//	int piece = b.getPiece(i, j);
                     		//	square[i][j].setIcon(new ImageIcon(pieceImage[color][piece]));
                 		//}
-                		tableroJP.add(casillasJP[i][j]);
+                		tableroJP.add(casillas[i][j]);
             		}
             		tableroJP.add(new BLabel((new Integer(i+1)).toString()));
         	}
@@ -97,5 +107,24 @@ public class Tablero {
             		setVerticalAlignment(CENTER);
 		}
         }
+
+	class Casilla extends JPanel {
+		
+		private JLabel l;
+		
+		public Casilla (Color color) {
+			
+			super();
+			setBackground(color);
+			setPreferredSize(new Dimension(42, 42));
+			l = new JLabel();
+        		l.setPreferredSize(new Dimension(32, 32));
+        		add(l);
+		}
+
+		void setIcon(Icon i) {
+        		l.setIcon(i);
+    		}
+	}
 }
 

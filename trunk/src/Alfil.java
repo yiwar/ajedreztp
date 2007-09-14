@@ -11,7 +11,7 @@ public class Alfil extends Pieza {
 	// Constructor
 	public Alfil (int color, int x, int y) {
 		
-		super(color, x, y);
+		super(color, x, y, "imagenes/a");
 		System.out.println("Alfil.Alfil(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 

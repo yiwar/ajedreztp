@@ -11,7 +11,8 @@ public class Peon extends Pieza {
 	// Constructor
 	public Peon (int color, int x, int y) {
 		
-		super(color, x, y);
+		super(color, x, y, "imagenes/p");
+		
 		System.out.println("Peon.Peon(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 
@@ -21,6 +22,6 @@ public class Peon extends Pieza {
 			return "P";
 		else
 			return "p";
-	}	
+	}
 }
 
