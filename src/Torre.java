@@ -11,7 +11,7 @@ public class Torre extends Pieza {
 	// Constructor
 	public Torre (int color, int x, int y) {
 		
-		super(color, x, y);
+		super(color, x, y, "imagenes/t");
 		System.out.println("Torre.Torre(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 

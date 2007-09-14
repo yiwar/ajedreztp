@@ -11,7 +11,7 @@ public class Rey extends Pieza {
 	// Constructor
 	public Rey (int color, int x, int y) {
 		
-		super(color, x, y);
+		super(color, x, y, "imagenes/r");
 		System.out.println("Rey.Rey(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 

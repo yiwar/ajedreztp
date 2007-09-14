@@ -40,6 +40,7 @@ public class Ajedrez extends JFrame implements Constantes{
         	cp.setLayout(new FlowLayout());
 
 		t.crearTableroGUI(this);
+		t.mostrarGUI();
 
 		t.mostrar();
 		show();
@@ -53,3 +54,4 @@ public class Ajedrez extends JFrame implements Constantes{
 		new Ajedrez();
 	}
 }
+
