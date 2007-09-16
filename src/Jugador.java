@@ -67,5 +67,36 @@ public abstract class Jugador implements Constantes {
 	}
 
 	public abstract void mover ();
+
+	public void realizarJugada (int fI, int cI, int fF, int cF) {
+		
+		Pieza pAMover, pAComer;
+		boolean bResultado;
+		
+		//pieza a mover
+		pAMover = tablero.get( fI, cI );
+		System.out.println("Jugador.realizarJugada(): mover de <"+fI+","+cI+"> a <"+fF+","+cF+">");
+		System.out.println("Jugador.realizarJugada(): la pieza a mover es " + pAMover.toString());
+		
+		//ficha a comer (si hay)
+		pAComer = tablero.get( fF, cF );
+
+		if ( pAComer != null ) //hay que comersela
+		{
+			//fAComer.dejarseComer();
+			//fichasComidas.addElement( fAComer );
+		}
+		
+		if ( pAMover != null ) 
+		{
+			tablero.add(fF, cF, pAMover);
+			tablero.add(fI, cI, null);
+			//bResultado = tab.ubicarFicha( fAMover, iFilFin, iColFin );
+			//return bResultado;
+		}
+		//return false; //algo anduvo mal!!
+		tablero.mostrarGUI();
+		tablero.mostrar();
+	}
 }	
 

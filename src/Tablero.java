@@ -38,6 +38,11 @@ public class Tablero {
 		tablero[x][y] = p;
 	}
 
+	public Pieza get (int f, int c) {
+
+		return tablero[f][c];
+	}
+
 	public void mostrar () {
 		
 		System.out.println("Tablero.show():");
@@ -61,6 +66,8 @@ public class Tablero {
 			for (int j=0; j < 8; j++) {
 				if (tablero[j][i] != null)
 					(casillas[j][i]).setIcon((tablero[j][i]).getImagen());
+				else
+					(casillas[j][i]).setIcon(null);
 			}
 		}
 	}
