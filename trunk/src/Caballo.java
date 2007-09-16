@@ -22,5 +22,10 @@ public class Caballo extends Pieza {
 		else
 			return "c";
 	}
+
+	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
+		
+		return true;
+	}
 }
 

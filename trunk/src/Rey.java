@@ -21,6 +21,11 @@ public class Rey extends Pieza {
 			return "R";
 		else
 			return "r";
-	}	
+	}
+
+	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {	
+
+		return true;
+	}
 }
 

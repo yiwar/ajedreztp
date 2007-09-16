@@ -20,44 +20,73 @@ public class JugadorHumano extends Jugador {
 
 	public void mover () {
 		
-		int fI, cI, fF, cF;
-		String movimiento = JOptionPane.showInputDialog("Movimiento:\nEj: A2 A4");
+		int fI = 0;
+		int cI = 0;
+		int fF = 0;
+		int cF = 0;
+		boolean valido = false;
+		boolean direccionValida;
+		String movimiento; // = JOptionPane.showInputDialog("Movimiento:\nEj: A2 A4");
+		String titulo = new String("Movimiento del jugador "+(this.color==BLANCO?"BLANCO":"NEGRO")+":\nEj: A7 A5");
 
-		while (movimiento == null || movimiento.equals("")) {
-			JOptionPane.showMessageDialog( null, "Introduce un movimiento" );
-			movimiento = JOptionPane.showInputDialog("Movimiento:\nEj: A2 A4");
+		while (!valido) {
+
+			movimiento = JOptionPane.showInputDialog(titulo);
+			while (movimiento == null || movimiento.equals("") ) {
+				JOptionPane.showMessageDialog( null, "Introduce un movimiento" );
+				movimiento = JOptionPane.showInputDialog(titulo);
+			}
+
+			// validar formato del movimiento introducido
+			movimiento = movimiento.toUpperCase();
+			direccionValida = true;
+			if (movimiento.length() != 5) {
+				JOptionPane.showMessageDialog( null, "Formato de direccion invalido" );
+				direccionValida = false;
+			}
+			if (direccionValida && ((movimiento.charAt(0) < 'A' || movimiento.charAt(0) > 'H') || (!Character.isDigit(movimiento.charAt(1))))) {
+				JOptionPane.showMessageDialog( null, "Formato de la direccion de inicio invalido" );
+				direccionValida = false;
+			}
+			if (direccionValida && (movimiento.charAt(2) != ' ')) {
+				JOptionPane.showMessageDialog( null, "Formato de direccion invalido" );
+				direccionValida = false;
+			}
+			if (direccionValida && ((movimiento.charAt(3) < 'A' || movimiento.charAt(3) > 'H') || (!Character.isDigit(movimiento.charAt(4))))) {
+				JOptionPane.showMessageDialog( null, "Formato de la direccion de fin invalido" );
+				direccionValida = false;
+			}
+			if (direccionValida) {
+				fI = Integer.parseInt(movimiento.charAt(1)+"") - 1;
+	   			cI = movimiento.charAt(0) - 'A';
+				fF = Integer.parseInt(movimiento.charAt(4)+"") - 1;
+	   			cF = movimiento.charAt(3) - 'A';
+
+				valido = jugadaValida(fI, cI, fF, cF);
+				if (!valido)
+					JOptionPane.showMessageDialog( null, "Ese movimiento es invalido" );
+			}
 		}
 
-		// validar formato del movimiento introducido
-		movimiento = movimiento.toUpperCase();
-		if (movimiento.length() != 5) {
-			JOptionPane.showMessageDialog( null, "Formato de direccion invalido" );
-		}
-		if ((movimiento.charAt(0) < 'A' || movimiento.charAt(0) > 'H') || (!Character.isDigit(movimiento.charAt(1)))) {
-			JOptionPane.showMessageDialog( null, "Formato de la direccion de inicio invalido" );
-		}
-		if (movimiento.charAt(2) != ' ') {
-			JOptionPane.showMessageDialog( null, "Formato de direccion invalido" );
-		}
-		if ((movimiento.charAt(3) < 'A' || movimiento.charAt(3) > 'H') || (!Character.isDigit(movimiento.charAt(4)))) {
-			JOptionPane.showMessageDialog( null, "Formato de la direccion de fin invalido" );
-		}
-
-		fI = Integer.parseInt(movimiento.charAt(1)+"") - 1;
-	   	cI = movimiento.charAt(0) - 'A';//Integer.parseInt(movimiento.charAt(0)+"");
-		fF = Integer.parseInt(movimiento.charAt(4)+"") - 1;
-	   	cF = movimiento.charAt(3) - 'A';//Integer.parseInt(movimiento.charAt(3)+"");
-
-		if (jugadaValida(fI, cI, fF, cF)) {
-	
-			realizarJugada(fI, cI, fF, cF);
-		}
+		realizarJugada(fI, cI, fF, cF);
 	}
 
-	// TODO: codigo de verificacion de las jugadas
 	public boolean jugadaValida (int fI, int cI, int fF, int cF) {
 
-		return true;
+		Pieza p, fFin;
+		//Cuadro c;
+		
+		p = tablero.get(fI, cI);
+
+		// no hay ficha
+		if ( p == null ) 
+			return false;
+
+		//no es el color que esta jugando
+		if ( p.getColor() != this.color ) 
+			return false;
+
+		return p.validarMovimiento(tablero, fF, cF);
 	}
 }
 

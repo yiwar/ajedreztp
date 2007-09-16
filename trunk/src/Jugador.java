@@ -19,6 +19,7 @@ public abstract class Jugador implements Constantes {
 	// constructor
 	public Jugador (int color, Tablero t) {
 
+		this.color = color;
 		piezas = new ArrayList();
 		tablero = t;		
 
@@ -91,6 +92,9 @@ public abstract class Jugador implements Constantes {
 		{
 			tablero.add(fF, cF, pAMover);
 			tablero.add(fI, cI, null);
+			// nueva posicion de la pieza
+			pAMover.setPosicion(fF, cF);
+
 			//bResultado = tab.ubicarFicha( fAMover, iFilFin, iColFin );
 			//return bResultado;
 		}
