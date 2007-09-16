@@ -22,5 +22,10 @@ public class Torre extends Pieza {
 		else
 			return "t";
 	}	
+
+	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
+
+		return true;
+	}
 }
 

@@ -21,6 +21,11 @@ public class Reina extends Pieza {
 			return "D";
 		else
 			return "d";
+	}
+
+	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
+		
+		return true;
 	}	
 }
 

@@ -12,7 +12,7 @@ public abstract class Pieza implements Constantes {
 	// color de la pieza
 	int color;
 	// posicion de la pieza en el tablero de juego	
-	int x, y;
+	int f, c;
 	ImageIcon icono;
 
 	// constructor
@@ -21,8 +21,8 @@ public abstract class Pieza implements Constantes {
 	public Pieza (int color, int x, int y, String ruta) {
 
 		this.color = color;
-		this.x = x;
-		this.y = y;
+		f = x;
+		c = y;
 		if (color == BLANCO)
 			icono = new ImageIcon(ruta+"b.gif");
 		else
@@ -38,5 +38,16 @@ public abstract class Pieza implements Constantes {
 
 	public abstract String toString ();
 
-	//public abstract boolean movimientoValido ();
+	public int getColor () {
+		
+		return color;
+	}
+
+	public void setPosicion (int f, int c) {
+
+		this.f = f;
+		this.c = c;
+	}
+
+	public abstract boolean validarMovimiento (Tablero tablero, int fF, int cF);
 }	

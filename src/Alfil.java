@@ -22,5 +22,10 @@ public class Alfil extends Pieza {
 		else
 			return "a";
 	}
+
+	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
+		
+		return true;
+	}
 }
 
