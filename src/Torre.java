@@ -13,7 +13,7 @@ public class Torre extends Pieza {
 	public Torre (int color, int x, int y) {
 		
 		super(color, x, y, "imagenes/t");
-		System.out.println("Torre.Torre(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
+		//System.out.println("Torre.Torre(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 
 	public String toString () {
@@ -23,6 +23,11 @@ public class Torre extends Pieza {
 		else
 			return "t";
 	}	
+
+	public Pieza copiar () {
+
+		return new Torre(this.color, this.f, this.c);
+	}
 
 	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
 

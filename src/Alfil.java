@@ -13,7 +13,7 @@ public class Alfil extends Pieza {
 	public Alfil (int color, int x, int y) {
 		
 		super(color, x, y, "imagenes/a");
-		System.out.println("Alfil.Alfil(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
+		//System.out.println("Alfil.Alfil(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 
 	public String toString () {
@@ -22,6 +22,11 @@ public class Alfil extends Pieza {
 			return "A";
 		else
 			return "a";
+	}
+
+	public Pieza copiar () {
+
+		return new Alfil(this.color, this.f, this.c);
 	}
 
 	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
@@ -73,7 +78,7 @@ public class Alfil extends Pieza {
 					if (dc != 0)
 						if (validarMovimiento(t, this.f+df, this.c+dc)) {
 							a.add(new Movimiento(this, this.f+df, this.c+dc));
-							System.out.println("Alfil.posiblesMovimientos(): De <"+this.f+","+this.c+"> a <"+(this.f+df)+","+(this.c+dc)+">");
+							//System.out.println("Alfil.posiblesMovimientos(): De <"+this.f+","+this.c+"> a <"+(this.f+df)+","+(this.c+dc)+">");
 						}
 		return a;
 	}

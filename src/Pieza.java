@@ -52,6 +52,16 @@ public abstract class Pieza implements Constantes {
 		this.c = c;
 	}
 
+	public int getFila () {
+
+		return f;
+	}
+
+	public int getColumna () {
+
+		return c;
+	}
+
 	public void setEstado (boolean comida) {
 	
 		this.comida = comida;
@@ -62,6 +72,7 @@ public abstract class Pieza implements Constantes {
 		return comida;
 	}
 
+	public abstract Pieza copiar ();
 	public abstract boolean validarMovimiento (Tablero tablero, int fF, int cF);
 	public abstract ArrayList posiblesMovimientos(Tablero t);
 }	

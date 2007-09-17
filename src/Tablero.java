@@ -22,7 +22,7 @@ public class Tablero {
 		
 		tablero = new Pieza[8][8];
 		casillas = new Casilla[8][8];
-		System.out.println("Tablero.Tablero(): Me acaban de crear");
+		//System.out.println("Tablero.Tablero(): Me acaban de crear");
 	}
 
 	// inicializa un tablero como copia de otro (sin interfaz grafica)
@@ -33,7 +33,8 @@ public class Tablero {
 
 		for (int f=0; f<8; f++)
 			for (int c=0; c<8; c++)
-				tablero[f][c] = aCopiar.get(f, c);
+				if (aCopiar.get(f, c) != null)
+					tablero[f][c] = (aCopiar.get(f, c)).copiar();
 	}
 
 	// version con GUI
@@ -215,7 +216,7 @@ public class Tablero {
         		*/
         		public void mouseClicked(MouseEvent e) {
             			//bv.selected(y, x);
-				System.out.println("Casilla pulsada: <" + f + ", " + c + ">");
+				//System.out.println("Casilla pulsada: <" + f + ", " + c + ">");
         		}
     		}
 	}

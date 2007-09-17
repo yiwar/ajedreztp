@@ -19,5 +19,20 @@ public class Movimiento {
 		this.fF = fF;
 		this.cF = cF;	
 	}
+
+	public Pieza getPieza () {
+
+		return p;
+	}
+
+	public int getFilaFinal () {
+
+		return fF;
+	}
+
+	public int getColumnaFinal () {
+
+		return cF;
+	}
 }
 

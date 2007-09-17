@@ -15,7 +15,7 @@ public class JugadorHumano extends Jugador {
 	public JugadorHumano (String nombre, int color, Tablero t) {
 		
 		super(nombre, color, t);
-		System.out.println("JugadorHumano.JugadorHumano(): " + nombre + " creado.");
+		//System.out.println("JugadorHumano.JugadorHumano(): " + nombre + " creado.");
 	}
 
 	public void mover () {

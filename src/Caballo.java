@@ -13,7 +13,7 @@ public class Caballo extends Pieza {
 	public Caballo (int color, int x, int y) {
 		
 		super(color, x, y, "imagenes/c");
-		System.out.println("Caballo.Caballo(): \tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
+		//System.out.println("Caballo.Caballo(): \tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 
 	public String toString () {
@@ -22,6 +22,11 @@ public class Caballo extends Pieza {
 			return "C";
 		else
 			return "c";
+	}
+
+	public Pieza copiar () {
+
+		return new Caballo(this.color, this.f, this.c);
 	}
 
 	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {

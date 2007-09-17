@@ -79,8 +79,8 @@ public abstract class Jugador implements Constantes {
 		
 		//pieza a mover
 		pAMover = tablero.get( fI, cI );
-		System.out.println("Jugador.realizarJugada(): mover de <"+fI+","+cI+"> a <"+fF+","+cF+">");
-		System.out.println("Jugador.realizarJugada(): la pieza a mover es " + pAMover.toString());
+		//System.out.println("Jugador.realizarJugada(): mover de <"+fI+","+cI+"> a <"+fF+","+cF+">");
+		//System.out.println("Jugador.realizarJugada(): la pieza a mover es " + pAMover.toString());
 		
 		//ficha a comer (si hay)
 		pAComer = tablero.get( fF, cF );
@@ -98,6 +98,38 @@ public abstract class Jugador implements Constantes {
 		tablero.mostrarGUI();
 		tablero.mostrar();
 	}
+
+	// Realiza la jugada sobre un tablero diferente al asignado a la partida
+	//
+	public void realizarJugada (Tablero t, Movimiento m) {
+		
+		int fI = (m.getPieza()).getFila();
+		int cI = (m.getPieza()).getColumna();
+		int fF = m.getFilaFinal();
+		int cF = m.getColumnaFinal();
+
+		Pieza pAMover, pAComer;
+		boolean bResultado;
+		
+		//pieza a mover
+		pAMover = t.get( fI, cI );
+		//System.out.println("Jugador.realizarJugada(): mover de <"+fI+","+cI+"> a <"+fF+","+cF+">");
+		//System.out.println("Jugador.realizarJugada(): la pieza a mover es " + pAMover.toString());
+		
+		//ficha a comer (si hay)
+		pAComer = t.get( fF, cF );
+
+		// hay que comer una pieza
+		if (pAComer != null)
+			pAComer.setEstado(true);
+		
+		if (pAMover != null) {
+			t.add(fF, cF, pAMover);
+			t.add(fI, cI, null);
+			// nueva posicion de la pieza
+			pAMover.setPosicion(fF, cF);
+		}
+	}	
 
 	public String getNombre () {
 		
