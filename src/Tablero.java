@@ -25,6 +25,17 @@ public class Tablero {
 		System.out.println("Tablero.Tablero(): Me acaban de crear");
 	}
 
+	// inicializa un tablero como copia de otro (sin interfaz grafica)
+	public Tablero (Tablero aCopiar) {
+
+		tablero = new Pieza[8][8];
+		casillas = new Casilla[8][8];
+
+		for (int f=0; f<8; f++)
+			for (int c=0; c<8; c++)
+				tablero[f][c] = aCopiar.get(f, c);
+	}
+
 	// version con GUI
 	public Tablero (JFrame f) {
 
@@ -108,43 +119,56 @@ public class Tablero {
         	p.add(new JPanel());
     	}
 
-	// Genera todos los movimientos validos para el jugador actual en este tablero
-    	public ArrayList generaMovimientos (int color) {
-/*
+	// Genera todos los movimientos validos para el jugador con el color indicado
+    	public ArrayList generarMovimientos (int color) {
+
         	ArrayList todas = new ArrayList();
         	ArrayList buenas = new ArrayList();
         	ArrayList nuevas;
         	Pieza actual;
         
-		for (int j=0; j<8; j++) {
-            		for (int i=0; i<8; i++) {
-                		if (tablero[i, j] != null && tablero[i, j].getColor() == color) {
+		for (int j=0; j<8; j++)
+            		for (int i=0; i<8; i++)
+                		if (tablero[i][j] != null && tablero[i][j].getColor() == color) {
                 			nuevas = get(i, j).posiblesMovimientos(this);
                 			todas.addAll(nuevas);
 				}
-            }
-        }
+		return todas;
+    	}
 
-        // depura la lista eliminando las que llevan a jaque
-        Posicion posReyInicial = buscaRey(turno);
-        Posicion posRey;
+	// Devuelve el valor de un tablero para un jugador con el color indicado. Sus piezas aportan puntos en funcion
+	// de la categoria mientras que las del rival restan igualmente en funcion de su categoria.
+	//
+	public int valorTablero (int color) {
 
-        for (int i=0; i<todas.size(); i++) {
-            Tablero t = new Tablero(this);
-            // mueveSinJaque devuelve la pos. del rey solo si ha cambiado
-            posRey = t.mueveSinJaque((Movimiento)todas.get(i));
-            if (posRey == null) posRey = posReyInicial;
-            // si el contrario puede NO comer nuestro rey, la jugada es buena
-            if ( ! t.amenazada(posRey.col, posRey.fil, t.turno)) {
-                buenas.add(todas.get(i));
-            }
-        }
+		// Puntuaciones:
+		// Peon: 1
+		// Alfil: 3
+		// Caballo: 3
+		// Torre: 5
+		// Reina: 10
+		
+		int total = 0;
 
-        return buenas;
-	*/
-		return null;
-    }
-	
+		for(int i=0; i<8; i++)
+    			for(int j=0; j<8; j++)
+    			{
+    				Pieza pieza = get(i, j);
+				if (pieza != null) {
+    					if (pieza instanceof Peon)
+    						total+=1*((pieza.getColor()==color)?1:-1);
+    					else if (pieza instanceof Alfil)
+    						total+=3*((pieza.getColor()==color)?1:-1);
+    					else if (pieza instanceof Caballo)
+    						total+=3*((pieza.getColor()==color)?1:-1);
+    					else if (pieza instanceof Torre)
+    						total+=5*((pieza.getColor()==color)?1:-1);
+    					else if (pieza instanceof Reina)
+    						total+=10*((pieza.getColor()==color)?1:-1);
+				}
+    		}	
+    		return total;				
+	}
 
     	class BLabel extends JLabel {
         	BLabel(String s) {
