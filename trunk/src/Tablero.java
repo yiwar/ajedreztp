@@ -4,6 +4,7 @@
  * Ligia Tatiana Gonzalez Leyva <calvinahobbes@gmail.com>
  */
 
+import java.util.*;
 import java.io.*;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -106,6 +107,44 @@ public class Tablero {
             		p.add(new BLabel((new Character((char) ('a' + i))).toString()));
         	p.add(new JPanel());
     	}
+
+	// Genera todos los movimientos validos para el jugador actual en este tablero
+    	public ArrayList generaMovimientos (int color) {
+/*
+        	ArrayList todas = new ArrayList();
+        	ArrayList buenas = new ArrayList();
+        	ArrayList nuevas;
+        	Pieza actual;
+        
+		for (int j=0; j<8; j++) {
+            		for (int i=0; i<8; i++) {
+                		if (tablero[i, j] != null && tablero[i, j].getColor() == color) {
+                			nuevas = get(i, j).posiblesMovimientos(this);
+                			todas.addAll(nuevas);
+				}
+            }
+        }
+
+        // depura la lista eliminando las que llevan a jaque
+        Posicion posReyInicial = buscaRey(turno);
+        Posicion posRey;
+
+        for (int i=0; i<todas.size(); i++) {
+            Tablero t = new Tablero(this);
+            // mueveSinJaque devuelve la pos. del rey solo si ha cambiado
+            posRey = t.mueveSinJaque((Movimiento)todas.get(i));
+            if (posRey == null) posRey = posReyInicial;
+            // si el contrario puede NO comer nuestro rey, la jugada es buena
+            if ( ! t.amenazada(posRey.col, posRey.fil, t.turno)) {
+                buenas.add(todas.get(i));
+            }
+        }
+
+        return buenas;
+	*/
+		return null;
+    }
+	
 
     	class BLabel extends JLabel {
         	BLabel(String s) {
