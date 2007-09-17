@@ -13,7 +13,7 @@ public class Rey extends Pieza {
 	public Rey (int color, int x, int y) {
 		
 		super(color, x, y, "imagenes/r");
-		System.out.println("Rey.Rey(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
+		//System.out.println("Rey.Rey(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 
 	public String toString () {
@@ -22,6 +22,11 @@ public class Rey extends Pieza {
 			return "R";
 		else
 			return "r";
+	}
+
+	public Pieza copiar () {
+
+		return new Rey(this.color, this.f, this.c);
 	}
 
 	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {	

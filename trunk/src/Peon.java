@@ -14,7 +14,7 @@ public class Peon extends Pieza {
 		
 		super(color, x, y, "imagenes/p");
 		
-		System.out.println("Peon.Peon(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
+		//System.out.println("Peon.Peon(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 
 	public String toString () {
@@ -23,6 +23,11 @@ public class Peon extends Pieza {
 			return "P";
 		else
 			return "p";
+	}
+
+	public Pieza copiar () {
+
+		return new Peon(this.color, this.f, this.c);
 	}
 
 	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
@@ -86,7 +91,7 @@ public class Peon extends Pieza {
 			for (int dc=-1; dc<=1; dc++)
 				if (validarMovimiento(t, this.f+df, this.c+dc)) {
 					a.add(new Movimiento(this, this.f+df, this.c+dc));
-					System.out.println("Peon.posiblesMovimientos(): De <"+this.f+","+this.c+"> a <"+(this.f+df)+","+(this.c+dc)+">");
+					//System.out.println("Peon.posiblesMovimientos(): De <"+this.f+","+this.c+"> a <"+(this.f+df)+","+(this.c+dc)+">");
 				}
 	return a;
     }	

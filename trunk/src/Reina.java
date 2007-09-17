@@ -13,7 +13,7 @@ public class Reina extends Pieza {
 	public Reina (int color, int x, int y) {
 		
 		super(color, x, y, "imagenes/d");
-		System.out.println("Reina.Reina(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
+		//System.out.println("Reina.Reina(): \t\tCreado con color <" + color + "> y posicion (" + x + ", " + y + ")");
 	}
 
 	public String toString () {
@@ -22,6 +22,11 @@ public class Reina extends Pieza {
 			return "D";
 		else
 			return "d";
+	}
+
+	public Pieza copiar () {
+
+		return new Reina(this.color, this.f, this.c);
 	}
 
 	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
