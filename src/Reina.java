@@ -24,8 +24,18 @@ public class Reina extends Pieza {
 	}
 
 	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
+
+		Torre t;
+		Alfil a;
 		
-		return true;
+		//la reina se mueve como una torre o un alfil
+		t = new Torre(this.color, this.f, this.c);
+		a = new Alfil(this.color, this.f, this.c);
+		
+		//si se mueve como una torre o como un alfil, está bien
+		if (t.validarMovimiento(tablero, fF, cF) || a.validarMovimiento(tablero, fF, cF))
+			return true;
+		return false;
 	}	
 }
 
