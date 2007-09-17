@@ -85,23 +85,16 @@ public abstract class Jugador implements Constantes {
 		//ficha a comer (si hay)
 		pAComer = tablero.get( fF, cF );
 
-		if ( pAComer != null ) //hay que comersela
-		{
-			//fAComer.dejarseComer();
-			//fichasComidas.addElement( fAComer );
-		}
+		// hay que comer una pieza
+		if (pAComer != null)
+			pAComer.setEstado(true);
 		
-		if ( pAMover != null ) 
-		{
+		if (pAMover != null) {
 			tablero.add(fF, cF, pAMover);
 			tablero.add(fI, cI, null);
 			// nueva posicion de la pieza
 			pAMover.setPosicion(fF, cF);
-
-			//bResultado = tab.ubicarFicha( fAMover, iFilFin, iColFin );
-			//return bResultado;
 		}
-		//return false; //algo anduvo mal!!
 		tablero.mostrarGUI();
 		tablero.mostrar();
 	}
@@ -109,6 +102,13 @@ public abstract class Jugador implements Constantes {
 	public String getNombre () {
 		
 		return nombre;
+	}
+
+	// Comprueba si el rey del jugador no ha sido comido
+	//
+	public boolean haPerdido () {
+
+		return ((Pieza)piezas.get(15)).getEstado();
 	}
 }	
 

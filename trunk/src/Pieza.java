@@ -9,6 +9,8 @@ import java.io.*;
 
 public abstract class Pieza implements Constantes {
 
+	// estado de la pieza en la partida
+	boolean comida = false;
 	// color de la pieza
 	int color;
 	// posicion de la pieza en el tablero de juego	
@@ -47,6 +49,16 @@ public abstract class Pieza implements Constantes {
 
 		this.f = f;
 		this.c = c;
+	}
+
+	public void setEstado (boolean comida) {
+	
+		this.comida = comida;
+	}
+
+	public boolean getEstado () {
+
+		return comida;
 	}
 
 	public abstract boolean validarMovimiento (Tablero tablero, int fF, int cF);

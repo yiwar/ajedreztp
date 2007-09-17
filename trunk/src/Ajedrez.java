@@ -34,7 +34,7 @@ public class Ajedrez extends JFrame implements Constantes{
 		// crear tablero y jugadores
 		t = new Tablero(this);
 		jH = new JugadorHumano("Tatiana Gonzalez", BLANCO, t);
-		jM = new JugadorMaquina("CPU", NEGRO, t);
+		jM = new JugadorHumano("CPU", NEGRO, t);
 
 		Container cp = getContentPane();
         	cp.setLayout(new FlowLayout());
@@ -46,11 +46,18 @@ public class Ajedrez extends JFrame implements Constantes{
 		show();
 
 		// desarrollo de la partida
-		while (true) {
+		while (!jH.haPerdido() && !jM.haPerdido()) {
 			
 			jH.mover();
 			jM.mover();
 		}
+
+		if (jH.haPerdido())
+			JOptionPane.showMessageDialog( null, jM.getNombre()+", ha ganado!!" );
+		else
+			JOptionPane.showMessageDialog( null, jH.getNombre()+", ha ganado!!" );
+
+		this.dispose();
 	}
 	
 	public static void main(String[] args) {
