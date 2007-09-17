@@ -9,6 +9,8 @@ import java.util.*;
 
 public abstract class Jugador implements Constantes {
 	
+	// nombre del jugador
+	String nombre;
 	// color con el que juega el jugador
 	int color;
 	// piezas del jugador
@@ -17,8 +19,9 @@ public abstract class Jugador implements Constantes {
 	Tablero tablero;
 
 	// constructor
-	public Jugador (int color, Tablero t) {
+	public Jugador (String nombre, int color, Tablero t) {
 
+		this.nombre = nombre;
 		this.color = color;
 		piezas = new ArrayList();
 		tablero = t;		
@@ -101,6 +104,11 @@ public abstract class Jugador implements Constantes {
 		//return false; //algo anduvo mal!!
 		tablero.mostrarGUI();
 		tablero.mostrar();
+	}
+
+	public String getNombre () {
+		
+		return nombre;
 	}
 }	
 
