@@ -25,7 +25,24 @@ public class Rey extends Pieza {
 
 	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {	
 
-		return true;
+		int difFil, difCol;
+		Pieza p;
+		
+		p = tablero.get(fF, cF);
+
+		difFil = this.f - fF;
+		difCol = this.c - cF;
+
+		//solo se mueve una posicion alrededor
+		if (Math.abs(difFil) <= 1 && Math.abs(difCol)<= 1) {
+			// solo podemos comer piezas enemigas
+			if (p != null )
+				if (p.getColor() == this.color)
+					return false;
+			return true;
+		}
+		else 
+			return false;
 	}
 }
 
