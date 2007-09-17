@@ -17,6 +17,10 @@ public class JugadorMaquina extends Jugador {
 
 	public void mover () {
 
+		// mejores movimientos que se van a calcular
+		ArrayList mejores=new ArrayList();
+		ArrayList movimientos=this.tablero.generarMovimientos();
+		
 	}
 }
 
