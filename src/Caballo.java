@@ -25,7 +25,25 @@ public class Caballo extends Pieza {
 
 	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
 		
-		return true;
+		int difFil, difCol;
+		Pieza p;
+		
+		p = tablero.get(fF, cF);
+
+		difFil = this.f - fF;
+		difCol = this.c - cF;
+
+		// el movimiento del caballo se caracteriza por un salto de
+		// 1 en las filas y 2 en las columnas o viceversa (en valor absoluto)
+		if (((Math.abs(difFil) == 1) && (Math.abs(difCol) == 2)) || ((Math.abs(difFil) == 2) && (Math.abs(difCol) == 1))) {
+			// solo podemos comer al rival
+			if (p != null )
+				if (p.getColor() == this.color)
+					return false;
+			return true;
+		}
+		else 
+			return false;
 	}
 }
 
