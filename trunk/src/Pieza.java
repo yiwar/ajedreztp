@@ -4,6 +4,7 @@
  * Ligia Tatiana Gonzalez Leyva <calvinahobbes@gmail.com>
  */
 
+import java.util.*;
 import javax.swing.*;
 import java.io.*;
 
@@ -62,4 +63,5 @@ public abstract class Pieza implements Constantes {
 	}
 
 	public abstract boolean validarMovimiento (Tablero tablero, int fF, int cF);
+	public abstract ArrayList posiblesMovimientos(Tablero t);
 }	

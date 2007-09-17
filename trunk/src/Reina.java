@@ -4,6 +4,7 @@
  * Ligia Tatiana Gonzalez Leyva <calvinahobbes@gmail.com>
  */
 
+import java.util.*;
 import java.io.*;
 
 public class Reina extends Pieza {
@@ -36,6 +37,11 @@ public class Reina extends Pieza {
 		if (t.validarMovimiento(tablero, fF, cF) || a.validarMovimiento(tablero, fF, cF))
 			return true;
 		return false;
+	}
+
+	public ArrayList posiblesMovimientos(Tablero t) {
+
+		return new ArrayList();
 	}	
 }
 

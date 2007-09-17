@@ -4,6 +4,7 @@
  * Ligia Tatiana Gonzalez Leyva <calvinahobbes@gmail.com>
  */
 
+import java.util.*;
 import java.io.*;
 
 public class Alfil extends Pieza {
@@ -25,6 +26,11 @@ public class Alfil extends Pieza {
 
 	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
 		
+		if (fF > 7 || fF < 0)
+			return false;
+		if (cF > 7 || cF < 0)
+			return false;
+
 		// diferencia entre filas y columnas para el movimiento
 		int difFil, difCol;
 
@@ -55,6 +61,21 @@ public class Alfil extends Pieza {
 		// no es un movimiento en diagonal
 		else 
 			return false;
+	}
+
+	public ArrayList posiblesMovimientos(Tablero t) {
+
+		ArrayList a = new ArrayList();
+
+		for (int df=-7; df<=7; df++)
+			if (df != 0)
+				for (int dc=-7; dc<=7; dc++)
+					if (dc != 0)
+						if (validarMovimiento(t, this.f+df, this.c+dc)) {
+							a.add(new Movimiento(this, this.f+df, this.c+dc));
+							System.out.println("Alfil.posiblesMovimientos(): De <"+this.f+","+this.c+"> a <"+(this.f+df)+","+(this.c+dc)+">");
+						}
+		return a;
 	}
 }
 

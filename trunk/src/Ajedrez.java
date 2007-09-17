@@ -34,7 +34,7 @@ public class Ajedrez extends JFrame implements Constantes{
 		// crear tablero y jugadores
 		t = new Tablero(this);
 		jH = new JugadorHumano("Tatiana Gonzalez", BLANCO, t);
-		jM = new JugadorHumano("CPU", NEGRO, t);
+		jM = new JugadorMaquina("CPU", NEGRO, t);
 
 		Container cp = getContentPane();
         	cp.setLayout(new FlowLayout());
