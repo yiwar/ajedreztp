@@ -32,7 +32,7 @@ public class JugadorMaquina extends Jugador {
 			Movimiento mov = (Movimiento)(it.next());
 			System.out.println("JugadorMaquina.mover(): "+mov.toString()+"; valor del nodo: "+tNuevo.valorTablero(this.color));
 			realizarJugada(tNuevo, mov);
-			aux = buscar(tNuevo, 1);
+			aux = buscar(tNuevo, MAXPROF);
 
 			if (aux > valorActual) {
 				valorActual = aux;
