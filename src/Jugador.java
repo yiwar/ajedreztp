@@ -96,7 +96,7 @@ public abstract class Jugador implements Constantes {
 			pAMover.setPosicion(fF, cF);
 		}
 		tablero.mostrarGUI();
-		tablero.mostrar();
+		//tablero.mostrar();
 	}
 
 	// Realiza la jugada sobre un tablero diferente al asignado a la partida
