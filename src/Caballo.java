@@ -30,7 +30,12 @@ public class Caballo extends Pieza {
 	}
 
 	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
-		
+	
+		if (fF > 7 || fF < 0)
+			return false;
+		if (cF > 7 || cF < 0)
+			return false;
+
 		int difFil, difCol;
 		Pieza p;
 		
@@ -54,7 +59,16 @@ public class Caballo extends Pieza {
 
 	public ArrayList posiblesMovimientos(Tablero t) {
 
-		return new ArrayList();
+		ArrayList a = new ArrayList();
+
+		for (int df=-2; df<=2; df++)
+			if (df != 0)
+				for (int dc=-2; dc<=2; dc++)
+					if (dc != 0)
+						if (validarMovimiento(t, this.f+df, this.c+dc)) {
+							a.add(new Movimiento(this, this.f+df, this.c+dc));
+						}
+		return a;
 	}
 }
 
