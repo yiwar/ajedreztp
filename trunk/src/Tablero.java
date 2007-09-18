@@ -16,6 +16,7 @@ public class Tablero {
 	private JPanel tableroJP;
 	private Pieza[][] tablero;
 	private Casilla[][] casillas;
+	private boolean tablas = false;
 
 	// Constructor
 	public Tablero () {
@@ -169,6 +170,18 @@ public class Tablero {
 				}
     		}	
     		return total;				
+	}
+
+	// Indica que el tablero contiene una partida en situacion de empate
+	//
+	public void setTablas () {
+
+		tablas = true;
+	}
+
+	public boolean getTablas () {
+
+		return tablas;
 	}
 
     	class BLabel extends JLabel {
