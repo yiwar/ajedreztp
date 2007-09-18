@@ -18,7 +18,7 @@ public class JugadorMaquina extends Jugador {
 
 	public void mover () {
 
-		int max = 0;
+		int aux = 0;
 		int valorActual = 0;
 		// mejores movimientos que se van a calcular
 		//ArrayList mejores=new ArrayList();
@@ -29,15 +29,16 @@ public class JugadorMaquina extends Jugador {
 		while(it.hasNext()) {
 			Tablero tNuevo = new Tablero(this.tablero);
 			Movimiento mov = (Movimiento)(it.next());
+			System.out.println("JugadorMaquina.mover(): "+mov.toString());
 			realizarJugada(tNuevo, mov);
-			max = buscar(tNuevo, 1);
+			aux = buscar(tNuevo, 1);
 
-			if (max > valorActual) {
-				valorActual = max;
+			if (aux > valorActual) {
+				valorActual = aux;
 				mejores = new ArrayList();
 				mejores.add(mov);
 			}
-			else if (max == valorActual)
+			else if (aux == valorActual)
 				mejores.add(mov);
 		}
 
@@ -45,6 +46,7 @@ public class JugadorMaquina extends Jugador {
 		Movimiento mov = (Movimiento)(mejores.get((int) (Math.random() * mejores.size())));
 		
 		// sobre el tablero de la partida
+		System.out.println("JugadorMaquina.mover(): movimiento elegido: "+mov.toString());
 		realizarJugada((mov.getPieza()).getFila(), (mov.getPieza()).getColumna(), mov.getFilaFinal(), mov.getColumnaFinal());
 	}
 
@@ -57,8 +59,11 @@ public class JugadorMaquina extends Jugador {
 		int valorActual = 0;
 
 		// limite, devolvemos el valor del tablero
-		if (profundidad == 0)
-			return t.valorTablero(this.color);
+		if (profundidad == 0) {
+			int temp = t.valorTablero(this.color);
+		       	System.out.println("JugadorMaquina.buscar(): Puntaje: "+temp+"  PROF: "+profundidad);	
+			return temp;
+		}
 		
 		ArrayList movimientos = t.generarMovimientos(this.color);
 
@@ -67,12 +72,13 @@ public class JugadorMaquina extends Jugador {
 		while (it.hasNext()) {
 			Tablero tNuevo = new Tablero(t);
 			Movimiento mov = (Movimiento)(it.next());
+			System.out.println("JugadorMaquina.buscar(): "+mov.toString()+" PROF: "+profundidad);
             		realizarJugada(tNuevo, mov);
 			aux = buscar(tNuevo, profundidad-1);
 			if (aux > valorActual)
 				valorActual = aux;
 		}		
-
+		System.out.println("JugadorMaquina.buscar(): Puntaje devuelto: "+valorActual+" PROF: "+profundidad);
 		return valorActual;
 	}
 }

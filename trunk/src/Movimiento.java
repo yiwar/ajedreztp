@@ -34,5 +34,10 @@ public class Movimiento {
 
 		return cF;
 	}
+
+	public String toString () {
+
+		return "<"+p.toString()+"> de <"+p.getFila()+","+p.getColumna()+"> a <"+fF+","+cF+">";
+	}
 }
 
