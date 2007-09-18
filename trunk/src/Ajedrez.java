@@ -42,7 +42,8 @@ public class Ajedrez extends JFrame implements Constantes{
 		t.crearTableroGUI(this);
 		t.mostrarGUI();
 
-		t.mostrar();
+		if (DEBUG)
+			t.mostrar();
 		show();
 
 		// desarrollo de la partida
@@ -63,8 +64,6 @@ public class Ajedrez extends JFrame implements Constantes{
 	}
 	
 	public static void main(String[] args) {
-	
-		System.out.println("Ajedrez.main(): He empezado");
 
 		System.out.println("Ajedrez.main(): Arrancando GUI");
 		new Ajedrez();

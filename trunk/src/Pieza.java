@@ -72,6 +72,20 @@ public abstract class Pieza implements Constantes {
 		return comida;
 	}
 
+	// Retorna un valor verdadero si la pieza puede ser comida por otra sobre el tablero t
+	//
+	public boolean amenazada (Tablero t) {
+
+		for (int fila=0; fila<8; fila++)
+			for (int columna=0; columna<8; columna++)
+				if (t.get(fila, columna) != null) {
+					Pieza p = t.get(fila, columna);
+					if (p.validarMovimiento(t, this.f, this.c))
+						return true;
+				}
+		return false;
+	}
+
 	public abstract Pieza copiar ();
 	public abstract boolean validarMovimiento (Tablero tablero, int fF, int cF);
 	public abstract ArrayList posiblesMovimientos(Tablero t);

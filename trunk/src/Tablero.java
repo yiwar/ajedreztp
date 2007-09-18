@@ -149,6 +149,7 @@ public class Tablero {
 		// Caballo: 3
 		// Torre: 5
 		// Reina: 10
+		// Rey: 100
 		
 		int total = 0;
 
@@ -167,6 +168,8 @@ public class Tablero {
     						total+=5*((pieza.getColor()==color)?1:-1);
     					else if (pieza instanceof Reina)
     						total+=10*((pieza.getColor()==color)?1:-1);
+					else if (pieza instanceof Rey)
+    						total+=100*((pieza.getColor()==color)?1:-1);
 				}
     		}	
     		return total;				
