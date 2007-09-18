@@ -31,6 +31,11 @@ public class Torre extends Pieza {
 
 	public boolean validarMovimiento (Tablero tablero, int fF, int cF) {
 
+		if (fF > 7 || fF < 0)
+			return false;
+		if (cF > 7 || cF < 0)
+			return false;
+
 		int difFil, difCol, diferencia;
 		Pieza p;
 
@@ -62,7 +67,15 @@ public class Torre extends Pieza {
 
 	public ArrayList posiblesMovimientos(Tablero t) {
 
-		return new ArrayList();
+		ArrayList a = new ArrayList();
+
+		for (int df=-7; df<=7; df++)
+			if (validarMovimiento(t, this.f+df, this.c))
+				a.add(new Movimiento(this, this.f+df, this.c));
+		for (int dc=-7; dc<=7; dc++)
+			if (validarMovimiento(t, this.f, this.c+dc))
+				a.add(new Movimiento(this, this.f, this.c+dc));
+		return a;
 	}	
 }
 
