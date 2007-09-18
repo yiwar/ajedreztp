@@ -14,4 +14,7 @@ public interface Constantes {
 
 	// profundidad de la busqueda del jugador maquina
 	static int MAXPROF	= 1;
+
+	// debug
+	static boolean DEBUG	= false;
 }

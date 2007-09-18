@@ -30,7 +30,8 @@ public class JugadorMaquina extends Jugador {
 		while(it.hasNext()) {
 			Tablero tNuevo = new Tablero(this.tablero);
 			Movimiento mov = (Movimiento)(it.next());
-			System.out.println("JugadorMaquina.mover(): "+mov.toString()+"; valor del nodo: "+tNuevo.valorTablero(this.color));
+			if (DEBUG)
+				System.out.println("JugadorMaquina.mover(): "+mov.toString()+"; valor del nodo: "+tNuevo.valorTablero(this.color));
 			realizarJugada(tNuevo, mov);
 			aux = buscar(tNuevo, MAXPROF);
 
@@ -54,12 +55,14 @@ public class JugadorMaquina extends Jugador {
 			Movimiento mov;
 			while(it.hasNext()) {
 				mov = (Movimiento)(it.next());
+				if (DEBUG)
+					System.out.println("JugadorMaquina.mover(): movimiento: "+mov.toString());
 				// la jugada implica comer a otra ficha
 				if (this.tablero.get(mov.getFilaFinal(), mov.getColumnaFinal()) != null)
 					optimizacion.add(mov);
 			}
-			
-			System.out.println("JugadorMaquina.mover(): hay "+optimizacion.size()+" jugadas optimizadas de "+mejores.size()+" posibles.");
+			if (DEBUG)
+				System.out.println("JugadorMaquina.mover(): hay "+optimizacion.size()+" jugadas optimizadas de "+mejores.size()+" posibles.");
 
 			// hay jugadas que comen otras fichas
 			if (optimizacion.size() != 0)
@@ -68,7 +71,8 @@ public class JugadorMaquina extends Jugador {
 				mov = (Movimiento)(mejores.get((int) (Math.random() * mejores.size())));
 
 			// sobre el tablero de la partida
-			System.out.println("JugadorMaquina.mover(): movimiento elegido: "+mov.toString());
+			if (DEBUG)
+				System.out.println("JugadorMaquina.mover(): movimiento elegido: "+mov.toString());
 			realizarJugada((mov.getPieza()).getFila(), (mov.getPieza()).getColumna(), mov.getFilaFinal(), mov.getColumnaFinal());
 		}
 	}
@@ -86,7 +90,8 @@ public class JugadorMaquina extends Jugador {
 		// limite, devolvemos el valor del tablero
 		if (profundidad == 0) {
 			//int temp = t.valorTablero(this.color);
-		       	System.out.println("JugadorMaquina.buscar(): Puntaje: "+valorActual+"  PROF: "+profundidad);	
+			if (DEBUG)
+		       		System.out.println("JugadorMaquina.buscar(): Puntaje: "+valorActual+"  PROF: "+profundidad);	
 			return valorActual;
 		}
 		
@@ -102,8 +107,9 @@ public class JugadorMaquina extends Jugador {
 			valor = buscar(tNuevo, profundidad-1);
 			if (valor > valorActual)
 				valorActual = valor;
-		}		
-		System.out.println("JugadorMaquina.buscar(): Puntaje devuelto: "+valorActual+" PROF: "+profundidad);
+		}
+		if (DEBUG)		
+			System.out.println("JugadorMaquina.buscar(): Puntaje devuelto: "+valorActual+" PROF: "+profundidad);
 		return valorActual;
 	}
 }
