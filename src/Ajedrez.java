@@ -46,16 +46,18 @@ public class Ajedrez extends JFrame implements Constantes{
 		show();
 
 		// desarrollo de la partida
-		while (!jH.haPerdido() && !jM.haPerdido()) {
+		while (!jH.haPerdido() && !jM.haPerdido() && !t.getTablas()) {
 			
 			jH.mover();
 			jM.mover();
 		}
 
-		if (jH.haPerdido())
-			JOptionPane.showMessageDialog( null, jM.getNombre()+", ha ganado!!" );
+		if (t.getTablas())
+			JOptionPane.showMessageDialog(null, "La partida ha acabado en tablas");
+		else if (jH.haPerdido())
+			JOptionPane.showMessageDialog(null, jM.getNombre()+", ha ganado!!");
 		else
-			JOptionPane.showMessageDialog( null, jH.getNombre()+", ha ganado!!" );
+			JOptionPane.showMessageDialog(null, jH.getNombre()+", ha ganado!!");
 
 		this.dispose();
 	}
